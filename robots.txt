@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://markmone.github.io/cnweb-fishingwar-com/sitemap.xml

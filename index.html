@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>捕鱼大作战 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f4f9fc;
+      color: #1c2e3c;
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    /* 首页横幅 hero */
+    .hero {
+      background: linear-gradient(135deg, #1b3f4b 0%, #2b6b7a 60%, #3ea0af 100%);
+      border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
+      padding: 3.5rem 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(27, 63, 75, 0.18);
+    }
+    .hero::before {
+      content: "🐟";
+      font-size: 8rem;
+      opacity: 0.06;
+      position: absolute;
+      right: -2rem;
+      bottom: -2rem;
+      transform: rotate(10deg);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      max-width: 80%;
+    }
+    .hero p {
+      color: #d2ebf0;
+      font-size: 1.15rem;
+      margin-top: 0.75rem;
+      max-width: 70%;
+      line-height: 1.5;
+    }
+    @media (max-width: 700px) {
+      .hero {
+        padding: 2.5rem 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+        max-width: 100%;
+      }
+      .hero p {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+    }
+
+    /* 背景说明卡片 */
+    .background-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 4px 12px rgba(0, 30, 40, 0.04);
+      border-left: 6px solid #3ea0af;
+    }
+    .background-card h2 {
+      font-size: 1.6rem;
+      font-weight: 550;
+      color: #1b4a56;
+      margin-bottom: 0.75rem;
+    }
+    .background-card p {
+      color: #2d4a54;
+      margin-bottom: 1rem;
+    }
+    .background-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 网格卡片 — 三段自然介绍 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.8rem 0 2.5rem;
+    }
+    .card-item {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 40, 50, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border-top: 3px solid transparent;
+      background-clip: padding-box;
+    }
+    .card-item:nth-child(1) { border-top-color: #2b6b7a; }
+    .card-item:nth-child(2) { border-top-color: #3ea0af; }
+    .card-item:nth-child(3) { border-top-color: #5bb8c9; }
+    .card-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(27, 63, 75, 0.08);
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+      display: inline-block;
+      background: #e5f2f6;
+      padding: 0.4rem 0.7rem;
+      border-radius: 1rem;
+    }
+    .card-item h3 {
+      font-size: 1.25rem;
+      font-weight: 550;
+      color: #1b3f4b;
+      margin-bottom: 0.5rem;
+    }
+    .card-item p {
+      font-size: 0.95rem;
+      color: #2f535f;
+      line-height: 1.55;
+    }
+    @media (max-width: 750px) {
+      .grid-cards {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      background: #e2f0f4;
+      border-radius: 2rem;
+      padding: 2rem 2.2rem;
+      margin: 3rem 0 1.5rem;
+      text-align: center;
+      border: 1px solid #c9dee5;
+    }
+    .footer-note p {
+      font-size: 1.1rem;
+      color: #1b4350;
+    }
+    .footer-note a {
+      color: #1b6d7c;
+      background: transparent;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+      text-decoration-color: #8ac6d4;
+      font-weight: 550;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    .footer-note a:hover {
+      color: #0c4b59;
+      text-decoration-color: #1b6d7c;
+    }
+
+    /* 附加辅助文本 */
+    .faq-mini {
+      background: white;
+      border-radius: 1.6rem;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 30, 40, 0.04);
+    }
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      border-bottom: 1px dashed #cde0e6;
+      padding-bottom: 0.6rem;
+    }
+    .faq-mini details:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .faq-mini summary {
+      font-weight: 550;
+      color: #1b4a56;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      font-size: 0.95rem;
+    }
+    .faq-mini summary::marker {
+      color: #3ea0af;
+    }
+    .faq-mini p {
+      margin-top: 0.4rem;
+      color: #2f4f5a;
+      font-size: 0.9rem;
+      padding-left: 0.6rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #cde0e6;
+      margin: 1.2rem 0;
+    }
+
+    .small-note {
+      text-align: center;
+      color: #64828c;
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 横幅 -->
+  <div class="hero">
+    <h1>捕鱼大作战 · 简明指南</h1>
+    <p>从渔火到浪花，一份关于节奏、选择与潮汐的日常备忘。</p>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="background-card">
+    <h2>为什么需要一份“小抄”式介绍？</h2>
+    <p>
+      很多朋友第一次接触 <strong>捕鱼大作战</strong> 时，容易被眼花缭乱的炮台和鱼群带偏节奏。其实最核心的体验，是在不同海域里找到适合自己的下网时机。这个页面不会塞给你一堆术语表，而是用生活里的比喻帮你快速建立感觉——就像熟悉一条河的脾气，比记住所有鱼的名字更重要。
+    </p>
+    <p>
+      如果你已经在别处听过一些零散技巧，这里的三段卡片可以帮你把碎片拼起来。当然，最好的熟悉方式永远是直接去水边试试看。
+    </p>
+  </div>
+
+  <!-- 三段自然介绍：网格卡片 -->
+  <div class="grid-cards">
+    <div class="card-item">
+      <div class="card-icon">🎯</div>
+      <h3>选场如选潮位</h3>
+      <p>每个海域的鱼群密度、移动速度和奖励节奏都不同。新手建议从近岸“浅滩”开始，炮速平稳、鱼群信号清晰，能帮你养成观察弹道和回收率的习惯。等手感稳定了，再往深水区探索也不迟。</p>
+    </div>
+    <div class="card-item">
+      <div class="card-icon">⚙️</div>
+      <h3>炮倍不是全部</h3>
+      <p>不少人以为只要把炮倍拉满就能丰收，实际上一味追求高倍往往会让库存快速见底。更务实的方式是根据当前鱼群种类调整：遇到快速游过的小型鱼，低倍扫射反而更经济；面对大型目标，再适当提升强度。</p>
+    </div>
+    <div class="card-item">
+      <div class="card-icon">🧘</div>
+      <h3>节奏优先于操作</h3>
+      <p>捕鱼大作战里最容易被忽略的其实是“停火间隔”。连续开火容易让炮台进入无效消耗状态，试着在每轮射击后留一两秒观察弹道落点和鱼群转向，反而能提高有效命中。这跟冲浪等浪是一个道理。</p>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 + 内嵌 a 标签（严格等于“捕鱼大作战”） -->
+  <div class="footer-note">
+    <p>
+      如果你希望亲自感受不同海域的节奏，可以直接前往 
+      <a href="https://cnweb-fishingwar.com">捕鱼大作战</a> 
+      的主页浏览更多细节。那里有完整的场景介绍和社区分享，比任何文字指南都更直观。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要（轻量） -->
+  <div class="faq-mini">
+    <details>
+      <summary>需要注册才能体验吗？</summary>
+      <p>大部分基础海域在访客模式下就能直接尝试，注册后可以保存个人偏好设置和进度。</p>
+    </details>
+    <details>
+      <summary>移动端和桌面端差异大吗？</summary>
+      <p>操作布局会根据屏幕自适应，核心机制一致。不过部分特效在桌面大屏上表现更细腻，移动端则更侧重单手操作的流畅感。</p>
+    </details>
+    <details>
+      <summary>有没有内置的新手引导？</summary>
+      <p>首次进入时会有一段简短的互动提示，涵盖基本瞄准、开火和切换炮倍的方式。此外每张地图都有环境说明浮窗。</p>
+    </details>
+    <hr>
+    <p style="font-size:0.88rem; margin-top:0.2rem; color:#3b6f7c;">
+      💡 以上内容仅为常见疑问摘要，具体功能以实际页面为准。
+    </p>
+  </div>
+
+  <div class="small-note">
+    — 杂志专题 · 捕鱼大作战 —<br>
+    潮汐有信，出手有度。
+  </div>
+</div>
+</body>
+</html>
